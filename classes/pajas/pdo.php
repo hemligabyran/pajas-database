@@ -47,7 +47,7 @@ class Pajas_Pdo
 
 	public static function instance($instance_name = 'default')
 	{
-	  if ( ! isset(self::$instances[$instance_name])) new Pdo($instance_name);
+	  if ( ! isset(self::$instances[$instance_name])) new self($instance_name);
 	  if (isset(self::$instances[$instance_name]))    return self::$instances[$instance_name]->db;
 
     return FALSE;
