@@ -24,7 +24,7 @@ abstract class Pajas_Model {
 		if (is_string($this->pdo))
 		{
 			// Load the database
-			$this->pdo = Pdo::instance($this->pdo);
+			$this->pdo = Pajas_pdo::instance($this->pdo);
 		}
 	}
 

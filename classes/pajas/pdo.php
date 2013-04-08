@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Pdo
+class Pajas_Pdo
 {
 
 	/**
@@ -47,10 +47,10 @@ class Pdo
 
 	public static function instance($instance_name = 'default')
 	{
-	  if ( ! isset(self::$instances[$instance_name])) new Kohana_pdo($instance_name);
+	  if ( ! isset(self::$instances[$instance_name])) new Pdo($instance_name);
 	  if (isset(self::$instances[$instance_name]))    return self::$instances[$instance_name]->db;
 
-    return false;
+    return FALSE;
 	}
 
 }
