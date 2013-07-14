@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Pajas_Model {
+abstract class Pajas_Model
+{
 
 	// Database instance
 	public $pdo = 'default';
@@ -26,6 +27,11 @@ abstract class Pajas_Model {
 			// Load the database
 			$this->pdo = Pajas_pdo::instance($this->pdo);
 		}
+	}
+
+	public static function factory($instance_name = NULL)
+	{
+		return new self($instance_name);
 	}
 
 }
