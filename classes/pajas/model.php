@@ -31,7 +31,8 @@ abstract class Pajas_Model
 
 	public static function factory($instance_name = NULL)
 	{
-		return new self($instance_name);
+		$class_name = get_called_class();
+		return new $class_name($instance_name);
 	}
 
 }
