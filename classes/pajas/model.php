@@ -32,7 +32,7 @@ abstract class Pajas_Model
 		}
 	}
 
-	public function __get($name=NULL)
+	public function __get($name)
 	{
 		if (is_array($this->data) && isset($this->data[$name]))
 			return $this->data[$name];
