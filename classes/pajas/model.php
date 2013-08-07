@@ -5,7 +5,7 @@ abstract class Pajas_Model
 
 	// Database instance
 	public $pdo = 'default';
-	
+
 	// Data array
 	protected $data;
 
@@ -40,17 +40,18 @@ abstract class Pajas_Model
 			return FALSE;
 	}
 
+	public function __set($name, $value)
+	{
+		$this->data[$name] = $value;
+	}
 
 	public function get()
 	{
 		if ($this->data != NULL)
-		{
 			return $this->data;
-		}
 
 		return array();
 	}
-
 
 	public static function factory($instance_name = NULL)
 	{
