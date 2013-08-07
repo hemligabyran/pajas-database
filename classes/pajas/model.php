@@ -5,6 +5,9 @@ abstract class Pajas_Model
 
 	// Database instance
 	public $pdo = 'default';
+	
+	// Data array
+	protected $data;
 
 	/**
 	 * Loads the database.
@@ -28,6 +31,26 @@ abstract class Pajas_Model
 			$this->pdo = Pajas_pdo::instance($this->pdo);
 		}
 	}
+
+	public function __get($name=NULL)
+	{
+		if (is_array($this->data) && isset($this->data[$name]))
+			return $this->data[$name];
+		else
+			return FALSE;
+	}
+
+
+	public function get()
+	{
+		if ($this->data != NULL)
+		{
+			return $this->data;
+		}
+
+		return array();
+	}
+
 
 	public static function factory($instance_name = NULL)
 	{
