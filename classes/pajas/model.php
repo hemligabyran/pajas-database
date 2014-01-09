@@ -45,6 +45,12 @@ abstract class Pajas_Model
 		$this->data[$name] = $value;
 	}
 
+	public static function factory($instance_name = NULL)
+	{
+		$class_name = get_called_class();
+		return new $class_name($instance_name);
+	}
+
 	public function get()
 	{
 		if ($this->data != NULL)
@@ -53,10 +59,9 @@ abstract class Pajas_Model
 		return array();
 	}
 
-	public static function factory($instance_name = NULL)
+	public function set($data)
 	{
-		$class_name = get_called_class();
-		return new $class_name($instance_name);
+		return $this->data = $data;
 	}
 
 }
