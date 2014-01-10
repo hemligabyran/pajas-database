@@ -64,7 +64,7 @@ class Session_Database extends Session
 	protected function _regenerate()
 	{
 		// Clean out sessions rows in the database that havent been used for a week
-		$this->pdo->exec('DELETE FROM sessions WHERE updated < '.$this->pdo->quote(date('Y-m-d H:i:s', 7 * 24 * 3600)));
+		$this->pdo->exec('DELETE FROM sessions WHERE updated < '.$this->pdo->quote(date('Y-m-d H:i:s', time() - (7 * 24 * 3600))));
 
 		// Generate a new id and make sure it does not exists in the database already
 		$new_id = FALSE;
