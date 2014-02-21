@@ -16,7 +16,7 @@ class Session_Database extends Session
 			{
 				$this->pdo->exec('CREATE TABLE sessions (
 						id char(16) COLLATE utf8_unicode_ci NOT NULL,
-						`data` text COLLATE utf8_unicode_ci NOT NULL,
+						`data` longtext COLLATE utf8_unicode_ci NOT NULL,
 						updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 						PRIMARY KEY (id)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
