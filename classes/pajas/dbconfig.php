@@ -62,15 +62,22 @@ abstract class Pajas_Dbconfig
 
 	public function set($property, $value)
 	{
-		if ($this->get($property) != $value)
+		if (is_string($property) && is_string($value))
 		{
-			Kohana::$log->add(LOG::INFO, 'Dbconfig updated. property='.$property.' value='.$value);
-			$sql = 'REPLACE INTO dbconfig (property, `value`) VALUES('.$this->pdo->quote($property).','.$this->pdo->quote($value).');';
+			if ($this->get($property) != $value)
+			{
+				Kohana::$log->add(LOG::INFO, 'Dbconfig updated. property='.$property.' value='.$value);
+				$sql = 'REPLACE INTO dbconfig (property, `value`) VALUES('.$this->pdo->quote($property).','.$this->pdo->quote($value).');';
 
-			return $this->pdo->exec($sql);
+				return $this->pdo->exec($sql);
+			}
+
+			return TRUE; // Value is already set correctly
 		}
-
-		return TRUE; // Value is already set correctly
+		else
+		{
+			Kohana::$log->add(LOG::ERROR, 'Dbconfig not updated. Property or value is not strings');
+		}
 	}
 
 }
