@@ -39,12 +39,23 @@ class Session_Database extends Session
 	}
 
 	/**
+	 * Set session ID
+	 */
+	public function set_id($new_id)
+	{
+		Cookie::set($this->_name, $new_id, $this->_lifetime);
+		$this->id = $new_id;
+		$this->read($new_id);
+	}
+
+	/**
 	 * @param   string  $id  session id
 	 * @return  string
 	 */
 	protected function _read($id = NULL)
 	{
-		if ( ! $id) $id = $this->id();
+		if ( ! $id)
+			$id = $this->id();
 
 		if ($id)
 		{
