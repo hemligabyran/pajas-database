@@ -399,11 +399,12 @@ abstract class Session
 	 *
 	 *     $success = $session->restart();
 	 *
+	 * @param   boolean $remove_prev_data - erase the previous sessoin data in storage
 	 * @return  boolean
 	 */
-	public function restart()
+	public function restart($remove_prev_data = TRUE)
 	{
-		if ($this->_destroyed === FALSE)
+		if ($this->_destroyed === FALSE && $remove_prev_data)
 		{
 			// Wipe out the current session.
 			$this->destroy();

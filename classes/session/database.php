@@ -107,7 +107,8 @@ class Session_Database extends Session
 			$this->_destroy();
 		else
 		{
-			if ( ! $this->id()) $this->_regenerate();
+			if ( ! $this->id())
+				$this->_regenerate();
 
 			$this->pdo->exec('REPLACE INTO sessions (id, data) VALUES('.$this->pdo->quote($this->id()).','.$this->pdo->quote($this->__toString()).')');
 
