@@ -35,8 +35,9 @@ class Pajas_Pdo
 			if ($initial_query = Kohana::$config->load('pdo.initial_query.'.$db_settings['driver']))
 				$this->db->query($initial_query);
 
-			if (Kohana::$environment === Kohana::DEVELOPMENT)
-				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			if (Kohana::$config->load('pdo.default.attr_errmode'))
+				$this->db->setAttribute(PDO::ATTR_ERRMODE, Kohana::$config->load('pdo.default.attr_errmode'));
+
 		}
 	}
 

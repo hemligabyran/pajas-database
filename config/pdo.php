@@ -1,5 +1,9 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
+$attr_errmode = '';
+if (Kohana::$environment === Kohana::DEVELOPMENT)
+	$attr_errmode = PDO::ERRMODE_EXCEPTION;
+
 return array
 (
 	/**
@@ -14,6 +18,7 @@ return array
 		'database_name' => 'foobar',
 		'username'      => 'user',
 		'password'      => 'pass',
+		'attr_errmode'  => $attr_errmode,
 	),
 
 	// SQLite example
