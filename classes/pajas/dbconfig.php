@@ -62,7 +62,7 @@ abstract class Pajas_Dbconfig
 
 	public function set($property, $value)
 	{
-		if (is_string($property) && is_string($value))
+		if ((is_string($property) || is_numeric($property)) && (is_string($value) || is_numeric($value)))
 		{
 			if ($this->get($property) != $value)
 			{
