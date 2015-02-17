@@ -66,7 +66,7 @@ abstract class Pajas_Dbconfig
 	{
 		$sql = 'DELETE FROM dbconfig WHERE property = '.$this->pdo->quote($property);
 
-		return $this->pdo->exec($pdo);
+		return $this->pdo->exec($sql);
 	}
 
 	public function set($property, $value)
