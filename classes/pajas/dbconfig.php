@@ -22,8 +22,10 @@ abstract class Pajas_Dbconfig
 			// Load the database
 			$this->pdo = Pajas_pdo::instance($this->pdo);
 		}
-		else throw new Exception('PDO instance name is not a string');
-
+		else
+		{
+			throw new Exception('PDO instance name is not a string');
+		}
 
 		if (Kohana::$environment === Kohana::DEVELOPMENT)
 		{
@@ -58,6 +60,13 @@ abstract class Pajas_Dbconfig
 		$sql = 'SELECT `value` FROM dbconfig WHERE property = '.$this->pdo->quote($property);
 
 		return $this->pdo->query($sql)->fetchColumn();
+	}
+
+	public function rm($property)
+	{
+		$sql = 'DELETE FROM dbconfig WHERE property = '.$this->pdo->quote($property);
+
+		return $this->pdo->exec($pdo);
 	}
 
 	public function set($property, $value)
